@@ -1,0 +1,78 @@
+diff --git a/nav2_behaviors/src/behavior_server.cpp b/nav2_behaviors/src/behavior_server.cpp
+index d6f7568c..135b584e 100644
+--- a/nav2_behaviors/src/behavior_server.cpp
++++ b/nav2_behaviors/src/behavior_server.cpp
+@@ -77,7 +77,7 @@ BehaviorServer::on_configure(const rclcpp_lifecycle::State & /*state*/)
+   transform_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_);
+ 
+   std::string costmap_topic, footprint_topic, robot_base_frame;
+-  double transform_tolerance;
++  double transform_tolerance = 0;
+   this->get_parameter("costmap_topic", costmap_topic);
+   this->get_parameter("footprint_topic", footprint_topic);
+   this->get_parameter("transform_tolerance", transform_tolerance);
+diff --git a/nav2_constrained_smoother/include/nav2_constrained_smoother/smoother.hpp b/nav2_constrained_smoother/include/nav2_constrained_smoother/smoother.hpp
+index b5432bf6..cf075123 100644
+--- a/nav2_constrained_smoother/include/nav2_constrained_smoother/smoother.hpp
++++ b/nav2_constrained_smoother/include/nav2_constrained_smoother/smoother.hpp
+@@ -292,7 +292,7 @@ private:
+     }
+     int last_i = 0;
+     int prelast_i = -1;
+-    Eigen::Vector2d prelast_dir;
++    Eigen::Vector2d prelast_dir = Eigen::Vector2d::Zero();
+     for (int i = 1; i <= static_cast<int>(path_optim.size()); i++) {
+       if (i == static_cast<int>(path_optim.size()) || optimized[i]) {
+         if (prelast_i != -1) {
+diff --git a/nav2_dwb_controller/nav_2d_utils/include/nav_2d_utils/parameters.hpp b/nav2_dwb_controller/nav_2d_utils/include/nav_2d_utils/parameters.hpp
+index c3c30428..e78306f1 100644
+--- a/nav2_dwb_controller/nav_2d_utils/include/nav_2d_utils/parameters.hpp
++++ b/nav2_dwb_controller/nav_2d_utils/include/nav_2d_utils/parameters.hpp
+@@ -64,7 +64,7 @@ param_t searchAndGetParam(
+   const nav2_util::LifecycleNode::SharedPtr & nh, const std::string & param_name,
+   const param_t & default_value)
+ {
+-  param_t value;
++  param_t value = 0;
+   nav2_util::declare_parameter_if_not_declared(
+     nh, param_name,
+     rclcpp::ParameterValue(default_value));
+diff --git a/nav2_planner/src/planner_server.cpp b/nav2_planner/src/planner_server.cpp
+index 67d3506d..7260ba7c 100644
+--- a/nav2_planner/src/planner_server.cpp
++++ b/nav2_planner/src/planner_server.cpp
+@@ -118,7 +118,7 @@ PlannerServer::on_configure(const rclcpp_lifecycle::State & /*state*/)
+     get_logger(),
+     "Planner Server has %s planners available.", planner_ids_concat_.c_str());
+ 
+-  double expected_planner_frequency;
++  double expected_planner_frequency = 0;
+   get_parameter("expected_planner_frequency", expected_planner_frequency);
+   if (expected_planner_frequency > 0) {
+     max_planner_duration_ = 1 / expected_planner_frequency;
+diff --git a/nav2_smoother/src/nav2_smoother.cpp b/nav2_smoother/src/nav2_smoother.cpp
+index 1fdf154d..a3d0184b 100644
+--- a/nav2_smoother/src/nav2_smoother.cpp
++++ b/nav2_smoother/src/nav2_smoother.cpp
+@@ -85,7 +85,7 @@ SmootherServer::on_configure(const rclcpp_lifecycle::State &)
+   transform_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_);
+ 
+   std::string costmap_topic, footprint_topic, robot_base_frame;
+-  double transform_tolerance;
++  double transform_tolerance = 0;
+   this->get_parameter("costmap_topic", costmap_topic);
+   this->get_parameter("footprint_topic", footprint_topic);
+   this->get_parameter("transform_tolerance", transform_tolerance);
+diff --git a/nav2_waypoint_follower/plugins/input_at_waypoint.cpp b/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
+index 5c613219..e75fd5b0 100644
+--- a/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
++++ b/nav2_waypoint_follower/plugins/input_at_waypoint.cpp
+@@ -49,7 +49,7 @@ void InputAtWaypoint::initialize(
+   logger_ = node->get_logger();
+   clock_ = node->get_clock();
+ 
+-  double timeout;
++  double timeout = 0;
+   std::string input_topic;
+   nav2_util::declare_parameter_if_not_declared(
+     node, plugin_name + ".timeout",
