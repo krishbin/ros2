@@ -615,4 +615,16 @@ repositories:
     type: git
     url: https://github.com/pantor/ruckig.git
     version: v0.9.2
+  cyberbotics/webots_ros2:
+    type: git
+    url: https://github.com/cyberbotics/webots_ros2.git
+    version: master
+  cyberbotics/webots_ros2/webots_ros2_importer/webots_ros2_importer/urdf2webots:
+    type: git
+    url: https://github.com/cyberbotics/urdf2webots.git
+    version: master
+  cyberbotics/webots_ros2/webots_ros2_importer/webots_ros2_importer/urdf2webots/tests/sources/motoman:
+    type: git
+    url: https://github.com/ros-industrial/motoman.git
+    version: 0.3.7
 
