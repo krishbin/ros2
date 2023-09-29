@@ -1,0 +1,34 @@
+diff --git a/rclcpp/include/rclcpp/context.hpp b/rclcpp/include/rclcpp/context.hpp
+index 2d8db29d..e934fec6 100644
+--- a/rclcpp/include/rclcpp/context.hpp
++++ b/rclcpp/include/rclcpp/context.hpp
+@@ -26,6 +26,7 @@
+ #include <unordered_set>
+ #include <utility>
+ #include <vector>
++#include <stdexcept>
+ 
+ #include "rcl/context.h"
+ #include "rcl/guard_condition.h"
+@@ -41,8 +42,7 @@ namespace rclcpp
+ class ContextAlreadyInitialized : public std::runtime_error
+ {
+ public:
+-  ContextAlreadyInitialized()
+-  : std::runtime_error("context is already initialized") {}
++  ContextAlreadyInitialized() : std::runtime_error("context is already initialized") {}
+ };
+ 
+ /// Forward declare WeakContextsWrapper
+diff --git a/rclcpp/src/rclcpp/logging_mutex.cpp b/rclcpp/src/rclcpp/logging_mutex.cpp
+index 308a21fe..bbbe9bbe 100644
+--- a/rclcpp/src/rclcpp/logging_mutex.cpp
++++ b/rclcpp/src/rclcpp/logging_mutex.cpp
+@@ -14,6 +14,7 @@
+ 
+ #include <memory>
+ #include <mutex>
++#include <stdexcept>
+ 
+ #include "rcutils/macros.h"
+ 

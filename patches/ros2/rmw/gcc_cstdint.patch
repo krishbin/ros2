@@ -1,0 +1,12 @@
+diff --git a/rmw/include/rmw/impl/cpp/key_value.hpp b/rmw/include/rmw/impl/cpp/key_value.hpp
+index 6ff2d5c..3dd321e 100644
+--- a/rmw/include/rmw/impl/cpp/key_value.hpp
++++ b/rmw/include/rmw/impl/cpp/key_value.hpp
+@@ -17,6 +17,7 @@
+ 
+ #include <map>
+ #include <string>
++#include <cstdint>
+ #include <vector>
+ 
+ namespace rmw
