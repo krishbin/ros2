@@ -7,7 +7,7 @@ index 60dfb0c..16d6211 100644
  find_package(TinyXML2 REQUIRED)
  find_package(yaml-cpp REQUIRED)
 -find_package(PythonLibs 3.10 EXACT REQUIRED)
-+find_package(PythonLibs 3.11 EXACT REQUIRED)
++find_package(PythonLibs 3.12 EXACT REQUIRED)
  
  add_custom_target(compile-lib-controller ALL
    COMMAND ${CMAKE_COMMAND} -E env "WEBOTS_HOME=${CMAKE_CURRENT_SOURCE_DIR}/webots" make release -f Makefile > /dev/null 2>&1
