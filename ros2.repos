@@ -258,7 +258,7 @@ repositories:
   ros2/pybind11_vendor:
     type: git
     url: https://github.com/ros2/pybind11_vendor.git
-    version: humble
+    version: 3.1.1
   ros2/python_cmake_module:
     type: git
     url: https://github.com/ros2/python_cmake_module.git
@@ -458,7 +458,7 @@ repositories:
   ros-planning/navigation2:
     type: git
     url: https://github.com/ros-planning/navigation2.git
-    version: 1.1.9
+    version: 1.1.11
   ros/bond_core:
     type: git
     url: https://github.com/ros/bond_core.git
@@ -595,10 +595,6 @@ repositories:
     type: git
     url: https://github.com/Slamtec/rplidar_ros.git
     version: ros2
-  ros-industrial/ros2_canopen:
-    type: git
-    url: https://github.com/ros-industrial/ros2_canopen.git
-    version: humble
   ros-planning/geometric_shapes:
     type: git
     url: https://github.com/ros-planning/geometric_shapes.git
